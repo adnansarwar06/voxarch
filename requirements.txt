@@ -1,0 +1,44 @@
+# Core LLM & RAG
+langchain>=0.1.15
+transformers>=4.36.2
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4
+PyYAML
+tqdm
+ffmpeg
+
+# Audio transcription (OpenAI Whisper only)
+git+https://github.com/openai/whisper.git
+
+# Audio embedding (CLAP, LAION)
+git+https://github.com/laion-ai/CLAP.git
+
+# Torch (needed for Whisper & CLAP)
+torch>=2.0.0
+torchaudio>=2.0.0
+soundfile
+
+# Document parsing
+pdfplumber
+pytesseract
+Pillow
+ebooklib
+beautifulsoup4
+python-docx
+
+# API
+fastapi
+uvicorn[standard]
+
+# For test/dev
+pytest
+httpx
+
+# Optional: if you want automatic environment variable expansion
+python-dotenv
+
+# Optional: remove if not using OCR
+# opencv-python
+
+# Optional: for progress bars in notebooks/scripts
+rich

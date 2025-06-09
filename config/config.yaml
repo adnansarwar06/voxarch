@@ -1,0 +1,41 @@
+models:
+  text_embedding_model: "sentence-transformers/all-MiniLM-L6-v2"         # SBERT model
+  audio_embedding_model: "laion/clap-htsat-unfused"                      # CLAP model
+  llm: "mistralai/Mistral-7B-Instruct-v0.2"                              # LLM for QA
+
+faiss:
+  index_path: "data/vector.index"                                        # Vector index location
+
+chunking:
+  chunk_size: 100       # For quick tests, set lower for short demo files
+  overlap: 20           # Overlap between chunks (words)
+
+audio:
+  whisper_model: "base" # Whisper model for transcription (base/tiny/small/medium/large)
+  clap_model: "laion/clap-htsat-unfused"
+  sample_rate: 48000
+  supported_extensions: [".wav", ".mp3", ".m4a", ".flac"]
+  max_audio_length_sec: 600         # Max length of each audio file in seconds
+  embed_method: "both"              # Options: "audio", "transcript", "both"
+
+parsing:
+  section_heading_regex: "^Chapter|^Section|^Recipe|^Part|^Introduction"
+  min_section_words: 50
+  min_chunk_words: 30
+  supported_extensions: [".txt", ".pdf", ".epub", ".docx"]
+  use_ocr_on_pdf: false
+  ocr_languages: ["eng"]
+  deduplicate_chunks: true
+  exclude_headings: []
+
+search:
+  top_k: 5             # Default top-K for search/QA results
+
+data:
+  text_dir: "data/text"    # Folder for books/epubs
+  audio_dir: "data/audio"  # Folder for audio/mp3 files
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+
